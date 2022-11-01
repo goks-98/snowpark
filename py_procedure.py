@@ -43,9 +43,6 @@ def run(session, from_table, join_table, to_table):
                                     ON D_DATE_SK = C_FIRST_SHIPTO_DATE_SK
                                     LIMIT 100""").collect()
         
-        for i,j in zip(cust_table, cust_table_2):
-            print(i,j)
-
     except exceptions:
         print("Idk some error")
                     
