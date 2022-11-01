@@ -22,4 +22,4 @@ df = pd.json_normalize(data)
 df.head()
 
 cust_sql = test_session.table("OIL_AND_GAS.CONFORMED.CUSTOMER_TABLE")
-cust_sql.show()
+cust_sql.show(10)
