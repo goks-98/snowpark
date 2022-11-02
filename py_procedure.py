@@ -46,4 +46,4 @@ def run(session, from_table, join_table, to_table):
     except exceptions:
         print("Idk some error")
                     
-    return i,j
+    return cust_table_2
