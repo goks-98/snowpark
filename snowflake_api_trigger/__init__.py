@@ -6,20 +6,25 @@ import pandas as pd
 import json
 import azure.functions as func
 
-#Connecting to snowflake
-connection_parameters = {
-"account": "ld77469.uae-north.azure",
-"user": "GOKS98",
-"password": "March20311",
-"role": "ACCOUNTADMIN",
-"warehouse": "SNOWFLAKE_WAREHOUSE",
-"database": "OIL_AND_GAS",
-"schema": "CONFORMED"
- }
 
-session = Session.builder.configs(connection_parameters).create()
 
-def main(req: Session) -> func.HttpResponse:
+
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    #Connecting to snowflake
+    connection_parameters = {
+    "account": "ld77469.uae-north.azure",
+    "user": "GOKS98",
+    "password": "March20311",
+    "role": "ACCOUNTADMIN",
+    "warehouse": "SNOWFLAKE_WAREHOUSE",
+    "database": "OIL_AND_GAS",
+    "schema": "CONFORMED"
+    }
+
+    session = Session.builder.configs(connection_parameters).create()
+    
     logging.info('Python HTTP trigger function processed a request.')
     #Creating a Dataframe
     df_table = session.table("SNOWFLAKE_SAMPLE_DATA.TPCDS_SF10TCL.WAREHOUSE")
