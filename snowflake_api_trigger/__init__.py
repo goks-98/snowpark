@@ -6,12 +6,8 @@ import pandas as pd
 import json
 import azure.functions as func
 
-
-
-
-
 def main(req: func.HttpRequest) -> func.HttpResponse:
-
+    
     #Connecting to snowflake
     connection_parameters = {
     "account": "ld77469.uae-north.azure",
