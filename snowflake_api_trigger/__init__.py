@@ -10,13 +10,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     
     #Connecting to snowflake
     connection_parameters = {
-    "account": "ld77469.uae-north.azure",
-    "user": "GOKS98",
-    "password": "March20311",
+    "account": "yw79382.uae-north.azure",
+    "user": "GOKUL98",
+    "password": "M@rch20311",
     "role": "ACCOUNTADMIN",
-    "warehouse": "SNOWFLAKE_WAREHOUSE",
-    "database": "OIL_AND_GAS",
-    "schema": "CONFORMED"
+    "warehouse": "COMPUTE_WH",
+    "database": "TEMP_DB",
+    "schema": "PUBLIC"
     }
 
     session = Session.builder.configs(connection_parameters).create()
@@ -32,12 +32,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     json_list = []
     try:
         for i in df_pd['W_ZIP']:
-            response = requests.get(f"http://api.openweathermap.org/geo/1.0/zip?zip={i},US&appid=b3effbd4d36024a4b9735d33830e7ca3")
+            response = requests.get(f"http://api.openweathermap.org/geo/1.0/zip?zip={i},US&appid=b597b3c1633fe8722c905f4d1a97a4b5")
             data = response.json()
             json_list.append(data)
     except ValueError:
         pass
-    json_list
 
     #Creating a new df with weather info and zip code
     zip_code = df_pd['W_ZIP']
@@ -47,9 +46,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     #Joining weather nad warehouse tables
     snowflake_df = df_pd.merge(weather_df, how='inner', on='W_ZIP')
 
-    snowflake_df_1 = session.create_dataframe(snowflake_df)
     #Writing table to snowflake
-    snowflake_df_1.write.mode("overwrite").save_as_table("w_warehouse_weather")
+    snowflake_df_1 = session.create_dataframe(snowflake_df)
+    snowflake_df_1.write.mode("overwrite").save_as_table("TEMP_DB.PUBLIC.warehouse_weather_api")
 
     return func.HttpResponse("Success !", status_code=200)
     
