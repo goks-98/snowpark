@@ -1,2 +1,3 @@
 # SnowPark
-Repo containing sample codebase used to demonstrate snowpark use cases as well as an introduction to GitHub.
+Repo containing sample code used to demonstrate snowpark use cases as well as an introduction to GitHub, DataOps, CI/CD pipelines and more...
+
