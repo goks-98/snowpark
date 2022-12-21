@@ -2,8 +2,6 @@
 #and load into temp_db database
 
 #Importing required libraries
-import logging
-import os
 from snowflake.snowpark import Session
 import requests
 import pandas as pd
@@ -20,9 +18,6 @@ connection_parameters = {
 }
 
 session = Session.builder.configs(connection_parameters).create()
-
-logging.info('Python HTTP trigger function processed a request.')
-#Creating a Dataframe
 df_table = session.table("SNOWFLAKE_SAMPLE_DATA.TPCDS_SF10TCL.WAREHOUSE")
 
 #Converting to pandas df to make manipulation easier

@@ -1,10 +1,8 @@
 #Azure Func IMplementation
 import logging
-import os
 from snowflake.snowpark import Session
 import requests
 import pandas as pd
-import json
 import azure.functions as func
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
