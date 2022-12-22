@@ -31,10 +31,13 @@ connection_parameters = {
 "schema": schema
 }
 
+#Creating a snowflake session
 session = Session.builder.configs(connection_parameters).create()
+
+#Creating a snowflake dataframe
 df_table = session.table("SNOWFLAKE_SAMPLE_DATA.TPCDS_SF10TCL.WAREHOUSE")
 
-#Converting to pandas df to make manipulation easier
+#Converting it to pandas df to make manipulation easier
 df_pd = df_table.to_pandas()
 
 #Getting weather data from API for every zipcode
