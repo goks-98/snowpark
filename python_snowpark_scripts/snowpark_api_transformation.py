@@ -5,16 +5,30 @@
 from snowflake.snowpark import Session
 import requests
 import pandas as pd
+import os
+from dotenv import load_dotenv
+
+#load environment variables
+load_dotenv()
+
+api_key = os.getenv("api_key")
+account = os.getenv("account")
+user = os.getenv("user")
+password = os.getenv("password")
+role = os.getenv("role")
+warehouse = os.getenv("warehouse")
+database = os.getenv("database")
+schema = os.getenv("schema")
 
 #Connecting to snowflake
 connection_parameters = {
-"account": "yw79382.uae-north.azure",
-"user": "GOKUL98",
-"password": "M@rch20311",
-"role": "ACCOUNTADMIN",
-"warehouse": "COMPUTE_WH",
-"database": "TEMP_DB",
-"schema": "PUBLIC"
+"account": account,
+"user": user,
+"password": password,
+"role": role,
+"warehouse": warehouse,
+"database": database,
+"schema": schema
 }
 
 session = Session.builder.configs(connection_parameters).create()
@@ -27,7 +41,7 @@ df_pd = df_table.to_pandas()
 json_list = []
 try:
     for i in df_pd['W_ZIP']:
-        response = requests.get(f"http://api.openweathermap.org/geo/1.0/zip?zip={i},US&appid=b597b3c1633fe8722c905f4d1a97a4b5")
+        response = requests.get(f"http://api.openweathermap.org/geo/1.0/zip?zip={i},US&appid={api_key}")
         data = response.json()
         json_list.append(data)
 except ValueError:
