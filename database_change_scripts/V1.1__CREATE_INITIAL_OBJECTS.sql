@@ -1,4 +1,3 @@
-USE DATABASE {{target_db}};
 USE SCHEMA {{target_schema}};
 -----------------------------------
 
