@@ -1,5 +1,5 @@
-USE DATABASE {{ target_db }};
-USE SCHEMA {{ target_schema }};
+USE DATABASE {{target_db}};
+USE SCHEMA {{target_schema}};
 -----------------------------------
 
 CREATE TABLE HELLO_WORLD
