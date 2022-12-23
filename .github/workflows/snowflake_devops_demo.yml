@@ -43,4 +43,4 @@ jobs:
           pip install schemachange
           
           echo "Step 2: Running schemachange"
-          schemachange -f $GITHUB_WORKSPACE/database_change_scripts -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_USER_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table --vars "{"target_db":"PROD_DB", "target_schema":"PROD_SCHEMA"}""
+          schemachange -f $GITHUB_WORKSPACE/database_change_scripts -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_USER_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table --vars "{"target_db":"PROD_DB", "target_schema":"PROD_SCHEMA"}"
