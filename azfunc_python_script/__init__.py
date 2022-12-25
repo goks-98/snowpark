@@ -9,9 +9,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     
     #Connecting to snowflake
     connection_parameters = {
-    "account": "yw79382.uae-north.azure",
-    "user": "GOKUL98",
-    "password": "M@rch20311",
+    "account": "dc88888.uae-north.azure",
+    "user": "user123",
+    "password": "pass@123",
     "role": "ACCOUNTADMIN",
     "warehouse": "COMPUTE_WH",
     "database": "TEMP_DB",
@@ -24,7 +24,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     #Creating a Dataframe
     df_table = session.table("SNOWFLAKE_SAMPLE_DATA.TPCDS_SF10TCL.WAREHOUSE")
 
-    #Converting to pandas df to make manipulation easier
+    #Converting to pandas df 
     df_pd = df_table.to_pandas()
 
     #Getting weather data from API for every zipcode
